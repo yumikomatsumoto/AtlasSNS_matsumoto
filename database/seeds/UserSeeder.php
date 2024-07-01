@@ -12,11 +12,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //初期データ作成
+        //初期データ
         User::create([
-            'username' => 'demo松本',
-            'mail' =>'demomatsumoto@example.com',
-            'password' => bcrypt('demo'),
+        'username' => '松本demo',
+        'mail' => 'demomatsumoto@example.com',
+        'password' => bcrypt('demo'),
         ]);
     }
 }
