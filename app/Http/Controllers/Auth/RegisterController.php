@@ -41,7 +41,15 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
+            // バリデーション設定
+            $request->validate([
+                'username' =>['required','string','min:2','max:12'],
+                'mail' =>['required','email','unique:atlas_sns, mail'],
+                'password' =>['required','alpha_num','min:8','max:20','confirmed'],
+                'password_confirmation'=>['required','alpha_num','min:8','max:20']
+            ]);
 
+            // 入力内容をもとにデータを追加
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
