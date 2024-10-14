@@ -20,3 +20,21 @@ header{
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+/* アコーディオンメニュー */
+.arrow{
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+}
+
+.arrow::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+}
