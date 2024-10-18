@@ -26,7 +26,7 @@
         <!-- アコーディオンメニュー -->
             <div id="accordion-menu">
                 <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
+                    <p><?php $user = Auth::user(); ?>{{$user->username}}さん<img src="images/arrow.png"></p>
                     <div class="arrow"></div>
                 <div class="accordion-content">
                 <ul>

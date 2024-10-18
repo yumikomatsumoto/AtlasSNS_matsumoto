@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -42,6 +42,14 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
 
+            //バリデーションルール
+            $request->validate([
+                'username' =>'required|string|min:2|max:12',
+                'mail' =>'required|string|min:5|max:40|unique:users,mail|email',
+                'password'=>'required|alpha_num|min:8|max:20|confirmed',
+            ]);
+
+            //入力データの取得
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
@@ -52,12 +60,12 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
-            return redirect('added');
+            return redirect('/added');
         }
         return view('auth.register');
     }
 
-    public function added(){
+    public function added(Request $request){
         return view('auth.added');
     }
 }
