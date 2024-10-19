@@ -43,5 +43,6 @@ Route::get('/search','UsersController@search');
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-// //ログアウトページ
-// Routes::post('/logout',)
+// //ログアウト処理
+Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('/logout', 'Auth\LoginController@logout');

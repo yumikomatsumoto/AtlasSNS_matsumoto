@@ -60,12 +60,22 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
+            //セッションにユーザー名を保存
+            $request->session()->put('username',$username);
+
+            //デバッグ処理
+            // dd($request->session()->all());
+
             return redirect('/added');
         }
         return view('auth.register');
     }
 
     public function added(Request $request){
-        return view('auth.added');
+        //セッションからユーザー名を取得
+        $username = $request->session()->get('username');
+
+        //ビューにユーザー名を渡す
+        return view('auth.added',['username'=>$username]);
     }
 }
