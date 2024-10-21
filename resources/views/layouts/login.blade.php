@@ -23,18 +23,20 @@
     <header>
         <div id = "head">
         <h1><a href="top"><img src="images/atlas.png"></a></h1>
-        <!-- アコーディオンメニュー -->
-            <div id="accordion-menu">
+            <div id="">
                 <div id="">
                     <p><?php $user = Auth::user(); ?>{{$user->username}}さん<img src="images/arrow.png"></p>
-                    <div class="arrow"></div>
+                <!-- アコーディオンメニュー -->
+                <div class="accordion">
+                    <button class="accordion-header"><span class="arrow"></span></button>
                 <div class="accordion-content">
-                <ul>
+                <ul class="box">
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
             </div>
+                </div>
         </div>
     </header>
     <div id="row">

@@ -33,15 +33,22 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
-//ログイン中のページ
-Route::get('/top','PostsController@index');
 
-Route::get('/profile','UsersController@profile');
+//ログイン中でなければ表示できないページ
+Route::middleware('auth')->group(function(){
+    //ログイン中のページ
+    Route::get('/top','PostsController@index');
 
-Route::get('/search','UsersController@search');
+    Route::get('/profile','UsersController@profile');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+    Route::get('/search','UsersController@search');
+
+    Route::get('/follow-list','PostsController@index');
+    Route::get('/follower-list','PostsController@index');
+
+    //相手ユーザーのプロフィールページ
+});
+
 
 // //ログアウト処理
 Route::get('/logout', 'Auth\LoginController@logout');
